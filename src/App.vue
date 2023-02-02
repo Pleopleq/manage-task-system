@@ -1,15 +1,15 @@
 <script>
 import TaskList from "./components/TaskList.vue";
+import TaskInputs from "./components/TaskInputs.vue";
 export default {
-  components: { TaskList }
+  components: { TaskList, TaskInputs }
 }
 </script>
 
 <template>
   <main>
-    <section>
+      <task-inputs></task-inputs>
       <task-list></task-list>
-    </section>
   </main>
 </template>
 
