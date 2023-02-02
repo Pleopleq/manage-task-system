@@ -1,7 +1,7 @@
 <template>
-  <article>
+  <article class="task-container">
     <h2>{{  title  }}</h2>
-    <span>{{ completed ? "Completada" : "Incompleta" }}</span>
+    <span :class="completed ? 'completed' : 'incompleted' ">{{ completed ? "Completada" : "Incompleta" }}</span>
     <br>
     <span>Fecha: {{ date }} </span>
     <p v-if="description">{{ description }}</p>
@@ -43,5 +43,18 @@ export default {
 </script>
 
 <style>
+.task-container {
+    border: white solid 1px;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.completed {
+    color: greenyellow;
+}
+
+.incompleted {
+    color:tomato;
+}
 
 </style>
