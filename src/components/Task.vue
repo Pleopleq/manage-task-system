@@ -1,16 +1,17 @@
 <template>
   <article>
-    <h1>{{  title  }}</h1>
-    <span>{{ completed }}</span>
-    <span> {{ date }} </span>
-    <p>{{ description }}</p>
+    <h2>{{  title  }}</h2>
+    <span>{{ completed ? "Completada" : "Incompleta" }}</span>
+    <br>
+    <span>Fecha: {{ date }} </span>
+    <p v-if="description">{{ description }}</p>
 
-    <div>
+    <div v-if="comments">
         <h3>Comentarios:</h3>
         {{ comments }}
     </div>
 
-    <p>{{ tags }}</p>
+    <p  v-if="tags">{{ tags }}</p>
   </article>
 </template>
 
