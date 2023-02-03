@@ -27,8 +27,8 @@ function editTask(id) {
     return axios.put(`https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/${id}`, config)
 }
 
-function deteleTask(id) {
+function deleteTask(id) {
     return axios.delete(`https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/${id}`, config)
 }
 
-export { getTask, getTasks, postTask, editTask, deteleTask }
+export { getTask, getTasks, postTask, editTask, deleteTask }

@@ -61,6 +61,7 @@ export default {
   methods: {
     addTask() {
       const task = {
+        token: this.title,
         title: this.title,
         is_completed: this.is_completed ? 1 : 0,
         due_date: this.due_date,

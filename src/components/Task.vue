@@ -14,6 +14,10 @@
     </div>
 
     <p v-if="tags && readTask">{{ tags }}</p>
+
+    <div>
+      <button @click="deleteTask(id)">Eliminar tarea</button>
+    </div>
   </article>
 </template>
 
@@ -38,6 +42,12 @@ export default {
     },
     tags: {
       type: String,
+    },
+    id: {
+      type: Number,
+    },
+    deleteTask: {
+      type: Function,
     },
   },
 };

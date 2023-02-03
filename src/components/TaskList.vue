@@ -9,6 +9,8 @@
       :description="task.description"
       :comments="task.comments"
       :tags="task.tags"
+      :id="task.id"
+      :deleteTask="deleteTask"
     ></task>
   </section>
 </template>
@@ -20,6 +22,7 @@ export default {
   components: { Task },
   props: {
     tasks: [],
+    deleteTask: Function,
   },
 };
 </script>
