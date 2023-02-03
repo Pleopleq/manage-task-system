@@ -9,7 +9,7 @@
       </div>
 
       <div>
-        <label for="title">Completado</label> 
+        <label for="title">Completado</label>
         <input type="checkbox" name="is_completed" v-model="is_completed" />
       </div>
 
@@ -42,27 +42,56 @@
 </template>
 
 <script>
+import { postTask } from "../services/tasks";
 export default {
-    name: "TaskInputs",
+  name: "TaskInputs",
 
-    data() {
-      return {
-        title: "",
-        is_completed: false,
-        due_date: new Date(),
-        comments: "",
-        description: "",
-        tags: "",
-        disabled: true
-      }
+  data() {
+    return {
+      title: "",
+      is_completed: false,
+      due_date: this.formatedDate(),
+      comments: "",
+      description: "",
+      tags: "",
+      disabled: true,
+    };
+  },
+
+  methods: {
+    addTask() {
+      const task = {
+        title: this.title,
+        is_completed: this.is_completed ? 1 : 0,
+        due_date: this.due_date,
+        comments: this.comments,
+        description: this.description,
+        tags: this.tags,
+      };
+
+      postTask(task);
+      this.$emit("added-task", task);
     },
 
-    watch: {
-      title(value){
-        if(!value){ return }
-        return this.disabled = false
+    formatedDate() {
+      const date = new Date();
+      const year = date.toLocaleString("default", { year: "numeric" });
+      const month = date.toLocaleString("default", { month: "2-digit" });
+      const day = date.toLocaleString("default", { day: "2-digit" });
+
+      const formattedDate = year + "-" + month + "-" + day;
+      return formattedDate;
+    },
+  },
+
+  watch: {
+    title(value) {
+      if (!value) {
+        return;
       }
-    }
+      return (this.disabled = false);
+    },
+  },
 };
 </script>
 
